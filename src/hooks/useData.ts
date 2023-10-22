@@ -29,6 +29,10 @@ const useData = <T>(endPoint: string, requestConfig?: AxiosRequestConfig, depend
 
     return () => controller.abort();
   }, dependencies ? [...dependencies] : []);
+  // dependencies is an optional item to trigger useEffect. If set to only [] will only be triggered 
+  // for the first time. So when user click on any genre this wouldn't triggers and don't 
+  // filter games. That'y why We apply this dependencies to let this hook to render page when 
+  // dependencies changed.
 
   return { data, error, isLoading };
 };
